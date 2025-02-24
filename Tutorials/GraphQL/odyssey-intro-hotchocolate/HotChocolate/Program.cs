@@ -3,7 +3,9 @@ using GraphQLServer.Types;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddGraphQLServer()
-    .AddQueryType<Query>();
+    .AddQueryType<Query>()
+    .AddType<Playlist>();
+
 builder.Services.AddCors();
 
 var app = builder.Build();
