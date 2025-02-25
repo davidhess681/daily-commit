@@ -1,14 +1,13 @@
-﻿namespace GraphQLServer.Types
+﻿namespace GraphQLServer.Types;
+
+public class Artist
 {
-    public class Artist
-    {
-        [ID]
-        public string Id { get; }
+    [ID]
+    public string Id { get; }
 
-        public string Name { get; set; }
+    public string Name { get; set; }
 
-        public int? Followers { get; set; }
+    public int? Followers { get; set; }
 
-        public double? Popularity { get; set; }
-    }
+    public double? Popularity { get; set; }
 }

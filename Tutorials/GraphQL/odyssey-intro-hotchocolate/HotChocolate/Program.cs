@@ -1,12 +1,13 @@
 using GraphQLServer.Types;
+using SpotifyWeb;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddGraphQLServer()
-    .AddQueryType<Query>()
-    .AddType<Playlist>();
-
+    .AddQueryType<Query>();
 builder.Services.AddCors();
+
+builder.Services.AddHttpClient<SpotifyService>();
 
 var app = builder.Build();
 
