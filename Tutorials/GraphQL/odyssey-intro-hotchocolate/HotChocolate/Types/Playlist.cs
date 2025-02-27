@@ -18,4 +18,7 @@ public class Playlist
 
     [GraphQLDescription("Describes the playlist, what to expect and entices the user to listen.")]
     public string? Description { get; set; }
+
+    [GraphQLDescription("The playlist's tracks.")]
+    public List<Track> Tracks { get; set; }// = [];
 }

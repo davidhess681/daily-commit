@@ -31,9 +31,20 @@ public class Query
 
     private static Playlist Map(SpotifyWeb.Playlist playlist)
     {
+        var tracks = playlist.Tracks.Items
+            .Select(x => new Track()
+            {
+                Id = x.Track.Id,
+                Name = x.Track.Name,
+                DurationMs = x.Track.Duration_ms,
+                Explicit = x.Track.Explicit,
+                Uri = x.Track.Uri
+            }).ToList();
+
         return new Playlist(playlist.Id, playlist.Name)
         {
-            Description = playlist.Description
+            Description = playlist.Description,
+            Tracks = tracks
         };
     }
 }
