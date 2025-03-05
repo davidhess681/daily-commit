@@ -4,6 +4,7 @@ using SpotifyWeb;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddGraphQLServer()
+    .AddApolloFederation()
     .AddQueryType<Query>()
     .AddMutationType<Mutation>();
 builder.Services.AddCors();
@@ -21,4 +22,4 @@ app.UseCors(builder => builder
 
 app.MapGraphQL();
 
-app.Run();
+app.RunWithGraphQLCommands(args);
