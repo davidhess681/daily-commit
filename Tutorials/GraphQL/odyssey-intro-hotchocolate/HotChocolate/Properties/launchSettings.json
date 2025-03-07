@@ -31,7 +31,7 @@
     "Apollo Sandbox": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "https://studio.apollographql.com/sandbox/explorer",
+      "launchUrl": "https://studio.apollographql.com/sandbox/explorer?endpoint=https://localhost:7296/graphql",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
