@@ -1,4 +1,6 @@
-﻿using SpotifyWeb;
+﻿using HotChocolate.ApolloFederation.Resolvers;
+using HotChocolate.ApolloFederation.Types;
+using SpotifyWeb;
 
 namespace GraphQLServer.Types;
 
@@ -32,6 +34,7 @@ public class Playlist
 
     [GraphQLDescription("The ID for the playlist.")]
     [ID]
+    [Key]
     public string Id { get; }
 
     [GraphQLDescription("The name of the playlist.")]
@@ -52,6 +55,15 @@ public class Playlist
         return response.Items
             .Select(Map)
             .ToList();
+    }
+
+    [ReferenceResolver]
+    public static async Task<Playlist?> GetPlaylistById(
+        SpotifyService spotifyService,
+        [Parent] Playlist playlist)
+    {
+        var response = await spotifyService.GetPlaylistAsync(playlist.Id);
+        return new Playlist(response);
     }
 
     private static Track Map(PlaylistTrack playlistTrack)

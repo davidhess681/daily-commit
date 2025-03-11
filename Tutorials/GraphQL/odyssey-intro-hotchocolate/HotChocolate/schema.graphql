@@ -1,4 +1,4 @@
-﻿schema @link(url: "https:\/\/specs.apollo.dev\/federation\/v2.6", import: [ "@tag", "FieldSet" ]) {
+﻿schema @link(url: "https:\/\/specs.apollo.dev\/federation\/v2.6", import: [ "@key", "@tag", "FieldSet" ]) {
   query: Query
   mutation: Mutation
 }
@@ -20,7 +20,7 @@ type Mutation {
 }
 
 "A curated collection of tracks designed for a specific activity or mood."
-type Playlist {
+type Playlist @key(fields: "id") {
   "The playlist's tracks."
   tracks: [Track!]! @cost(weight: "10")
   "The ID for the playlist."
@@ -37,6 +37,7 @@ type Query {
   "Retrieves a specific playlist."
   playlist(id: ID!): Playlist @cost(weight: "10")
   _service: _Service!
+  _entities(representations: [_Any!]!): [_Entity]!
 }
 
 "A single audio file, usually a song."
@@ -58,6 +59,9 @@ type _Service {
   sdl: String!
 }
 
+"Union of all types that key directive applied. This information is needed by the Apollo federation gateway."
+union _Entity = Playlist
+
 input AddItemsToPlaylistInput {
   "The ID of the playlist."
   playlistId: ID!
@@ -67,6 +71,9 @@ input AddItemsToPlaylistInput {
 
 "The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response."
 directive @cost("The `weight` argument defines what value to add to the overall cost for every appearance, or possible appearance, of a type, field, argument, etc." weight: String!) on SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM | INPUT_FIELD_DEFINITION
+
+"Used to indicate a combination of fields that can be used to uniquely identify and fetch an object or interface."
+directive @key(fields: FieldSet! resolvable: Boolean = true) repeatable on OBJECT | INTERFACE
 
 "Links definitions within the document to external schemas."
 directive @link("Gets imported specification url." url: String! "Gets optional list of imported element names." import: [String!]) repeatable on SCHEMA
