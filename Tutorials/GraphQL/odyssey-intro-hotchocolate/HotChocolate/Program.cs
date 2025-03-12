@@ -6,7 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddGraphQLServer()
     .AddApolloFederation()
     .AddQueryType<Query>()
-    .AddMutationType<Mutation>();
+    .AddMutationType<Mutation>()
+    .AddType<Recipe>();
+
 builder.Services.AddCors();
 builder.Services.AddLogging();
 builder.Services.AddHttpLogging(_ => { });
