@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Duende.AccessTokenManagement" Version="3.2.0" />
     <PackageReference Include="HotChocolate.ApolloFederation" Version="15.0.3" />
     <PackageReference Include="HotChocolate.AspNetCore" Version="15.0.3" />
     <PackageReference Include="HotChocolate.AspNetCore.CommandLine" Version="15.0.3" />
