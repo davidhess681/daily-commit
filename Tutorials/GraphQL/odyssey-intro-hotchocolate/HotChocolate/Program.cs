@@ -1,4 +1,5 @@
 using GraphQLServer.Types;
+using SpotifyApi;
 using SpotifyWeb;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +25,7 @@ builder.Services.AddClientCredentialsTokenManagement()
         client.Scope = "app-remote-control playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-playback-position user-read-playback-state user-read-recently-played user-read-currently-playing user-modify-playback-state ugc-image-upload streaming";
     });
 
+//builder.Services.AddHttpClient<SpotifyApiClient>()
 builder.Services.AddHttpClient<SpotifyService>()
     .AddClientCredentialsTokenHandler("spotify.token");
 

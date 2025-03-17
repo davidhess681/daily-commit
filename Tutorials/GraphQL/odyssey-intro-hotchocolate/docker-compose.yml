@@ -1,0 +1,15 @@
+services:
+  graphqlserver:
+    image: ${DOCKER_REGISTRY-}graphqlserver
+    build:
+      context: .
+      dockerfile: HotChocolate/Dockerfile
+
+  apollo-router:
+    image: ghcr.io/apollographql/router:v1.61.0
+    ports:
+      - "4000:4000"
+    env_file: .env
+    # environment:
+    #   APOLLO_GRAPH_REF: "<your-graph-ref>"
+    #   APOLLO_KEY: "<your-graph-api-key>"
