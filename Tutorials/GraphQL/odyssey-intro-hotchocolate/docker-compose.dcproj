@@ -10,13 +10,16 @@
     <DockerServiceName>graphqlserver</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
-    <None Include=".env" />
+    <None Include="Router\.env" />
     <None Include="docker-compose.override.yml">
       <DependentUpon>docker-compose.yml</DependentUpon>
     </None>
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
-    <None Include="router-config.yaml" />
-    <None Include="supergraph-config.yaml" />
+    <None Include="Router\router-config.yaml" />
+    <None Include="Router\Dockerfile" />
+    <None Include="Rover\.env" />
+    <None Include="Rover\supergraph-config.yaml" />
+    <None Include="Rover\Dockerfile" />
   </ItemGroup>
 </Project>
