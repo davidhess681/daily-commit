@@ -31,8 +31,7 @@ namespace SpotifyWeb
 
         public SpotifyService(System.Net.Http.HttpClient httpClient)
         {
-            BaseUrl = "https://api.spotify.com/v1";
-            //BaseUrl = "https://spotify-demo-api-fe224840a08c.herokuapp.com/v1";
+            BaseUrl = "https://spotify-demo-api-fe224840a08c.herokuapp.com/v1";
             _httpClient = httpClient;
         }
 

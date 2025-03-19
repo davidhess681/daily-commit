@@ -4,8 +4,13 @@ services:
     build:
       context: .
       dockerfile: HotChocolate/Dockerfile
+    ports:
+      - "5270:8080"
+      - "7296:8081"
 
   apollo-router:
+    # image: ghcr.io/apollographql/router:v1.61.0
+    #command: router --config router-config.yaml
     image: ${DOCKER_REGISTRY-}router
     build:
       context: .
@@ -22,3 +27,4 @@ services:
     ports:
       - "4200:4200"
     env_file: Rover/.env
+    command: dev --supergraph-config Rover/supergraph-config.yaml
