@@ -1,6 +1,6 @@
 FROM debian:stable-slim AS installer
 RUN apt update && apt install -y curl
-RUN curl -sSL https://rover.apollo.dev/nix/v0.28.1 | sh
+RUN curl -sSL https://rover.apollo.dev/nix/v0.26.3 | sh
 
 FROM debian:stable-slim AS runner
 COPY --from=installer /root/.rover/bin/rover /root/.rover/bin/rover

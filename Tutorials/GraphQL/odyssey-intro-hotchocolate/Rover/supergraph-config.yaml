@@ -1,6 +1,7 @@
 federation_version: =2.8.0
 subgraphs:
   soundtracks: # Subgraph running locally, using introspection to retrieve schema
+    routing_url: https://localhost:7296/graphql
     schema:
       subgraph_url: https://localhost:7296/graphql
   recipes: # Schema downloaded from GraphOS registry
