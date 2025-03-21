@@ -477,4 +477,3 @@ $RECYCLE.BIN/
 *.lnk
 **/.env
 router.exe
-/Tutorials/GraphQL/odyssey-intro-hotchocolate/docker-compose.override.yml

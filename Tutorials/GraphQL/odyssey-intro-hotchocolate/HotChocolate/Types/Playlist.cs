@@ -15,6 +15,8 @@ public class Playlist
         Name = name;
     }
 
+    // In a future refactor, I'd like to move this to some form of mapper so that these 
+    // models are not tightly coupled like this.
     public Playlist(PlaylistSimplified playlist)
     {
         Id = playlist.Id;
@@ -57,6 +59,8 @@ public class Playlist
             .ToList();
     }
 
+    // I wonder what the typical convention is here, as far as having the Playlist
+    // Reference Resolver function declared within the Playlist type vs elsewhere.
     [ReferenceResolver]
     public static async Task<Playlist?> GetPlaylistById(
         SpotifyService spotifyService,

@@ -8,7 +8,7 @@
       "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/graphql",
       "serviceActions": {
         "graphqlserver": "StartDebugging",
-        "apollo-router": "StartWithoutDebugging"
+        "apollo-rover": "StartWithoutDebugging"
       }
     }
   }

@@ -16,4 +16,6 @@ services:
     ports:
       - "4200:4200"
     env_file: Rover/.env
+    # Launching gives this error: "error: Invalid path. No file found at supergraph-config.yaml".
+    # More docker research required for building this image correctly
     command: dev --supergraph-config supergraph-config.yaml
