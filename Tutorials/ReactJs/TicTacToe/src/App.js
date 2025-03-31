@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Game(){
+export default function Game() {
     const [history, setHistory] = useState([Array(9).fill(null)]);
     const [currentMove, setCurrentMove] = useState(0);
     const xIsNext = currentMove % 2 === 0;
@@ -11,7 +11,7 @@ export default function Game(){
         setHistory(nextHistory);
         setCurrentMove(nextHistory.length - 1);
     }
-    function jumpTo(nextMove){
+    function jumpTo(nextMove) {
         setCurrentMove(nextMove);
     }
     const moves = history.map((_, move) => {
@@ -32,7 +32,7 @@ export default function Game(){
     return (
         <div className='game'>
             <div className='game-board'>
-                <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay}/>
+                <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
             </div>
             <div className='game-info'>
                 <ol>{moves}</ol>
@@ -41,16 +41,16 @@ export default function Game(){
     );
 }
 
-function Board({xIsNext, squares, onPlay}) {
-    function handleClick(i){
-        if(squares[i] || calculateWinner(squares)){
+function Board({ xIsNext, squares, onPlay }) {
+    function handleClick(i) {
+        if (squares[i] || calculateWinner(squares)) {
             return;
         }
         const nextSquares = squares.slice();
-        if(xIsNext){
+        if (xIsNext) {
             nextSquares[i] = "X";
         }
-        else{
+        else {
             nextSquares[i] = "O";
         }
         onPlay(nextSquares);
@@ -58,36 +58,35 @@ function Board({xIsNext, squares, onPlay}) {
 
     const winner = calculateWinner(squares);
     let status;
-    if (winner){
+    if (winner) {
         status = "Winner: " + winner;
     }
-    else{
+    else {
         status = "Next player: " + (xIsNext ? "X" : "O")
     }
+
+
+    function row(indexes) {
+        return indexes.map(index =>
+            <Square value={squares[index]} onSquareClicked={() => handleClick(index)} />
+        );
+    }
+
+    const rows = [[0, 1, 2], [3, 4, 5], [6, 7, 8]].map(i =>
+        <div className="board-row">
+            {row(i)}
+        </div>
+    )
 
     return (
         <>
             <div className="status">{status}</div>
-            <div className="board-row">
-                <Square value={squares[0]} onSquareClicked={() => handleClick(0)} />
-                <Square value={squares[1]} onSquareClicked={() => handleClick(1)} />
-                <Square value={squares[2]} onSquareClicked={() => handleClick(2)} />
-            </div>
-            <div className="board-row">
-                <Square value={squares[3]} onSquareClicked={() => handleClick(3)} />
-                <Square value={squares[4]} onSquareClicked={() => handleClick(4)} />
-                <Square value={squares[5]} onSquareClicked={() => handleClick(5)} />
-            </div>
-            <div className="board-row">
-                <Square value={squares[6]} onSquareClicked={() => handleClick(6)} />
-                <Square value={squares[7]} onSquareClicked={() => handleClick(7)} />
-                <Square value={squares[8]} onSquareClicked={() => handleClick(8)} />
-            </div>
+            {rows}
         </>
     )
 }
 
-function Square({value, onSquareClicked}) {
+function Square({ value, onSquareClicked }) {
 
     return <button className="square" onClick={onSquareClicked}>{value}</button>;
 }
