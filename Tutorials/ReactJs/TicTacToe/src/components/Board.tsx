@@ -6,7 +6,7 @@ interface BoardProps {
   onPlay: (squares: string[]) => void;
 }
 
-export default function Board({ xIsNext, squares, onPlay }: BoardProps) {
+function Board({ xIsNext, squares, onPlay }: BoardProps) {
   function handleClick(i: number) {
     if (squares[i] || calculateWinner(squares)) {
       return;
@@ -70,3 +70,5 @@ function calculateWinner(squares: string[]) {
   }
   return null;
 }
+
+export default Board;
