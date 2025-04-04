@@ -9,6 +9,7 @@
   }
   
   h1 {
+    color: red;
     margin-top: 0;
     font-size: 22px;
   }
@@ -37,6 +38,10 @@
     margin-top: 0;
     font-size: 12px;
   }
+
+  /* p {
+    color: green;
+  } */
   
   code {
     font-size: 1.2em;
@@ -87,5 +92,44 @@
   
   .game-info {
     margin-left: 20px;
+  }
+
+  .special {
+    color: orange;
+    font-weight: bold;
+  }
+
+  li em {
+    color: rebeccapurple;
+  }
+
+  h1 + p {
+    font-size: 200%;
+  }
+
+  a:link {
+    color: pink;
+    font-weight: bold;
+  }
+
+  a:visited {
+    color: green;
+    font-weight: bold;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .outer {
+    border: 5px solid black;
+  }
+
+  .box {
+    padding: 10px;
+    width: calc(90% - 10px);
+    background-color: rebeccapurple;
+    color: white;
+    transform: rotate(0.8turn);
   }
   
