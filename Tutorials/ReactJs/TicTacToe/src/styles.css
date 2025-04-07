@@ -133,3 +133,12 @@
     transform: rotate(0.8turn);
   }
   
+  body{
+    padding: 10px 15px 15px 5px;
+    background-color: pink;
+  }
+  @media (min-width: 50em) {
+    body{
+      background-color: blue;
+    }
+  }
