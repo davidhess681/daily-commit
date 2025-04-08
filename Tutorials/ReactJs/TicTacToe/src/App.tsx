@@ -3,31 +3,31 @@ import Game from "./components/Game";
 function App() {
   return (
     <>
-      <h1>I am a level one heading</h1>
-
+      <h1>Jane Doe</h1>
+      <div className="job-title">Web Developer</div>
       <p>
-        This is a paragraph of text. In the text is a<span>span element</span>{" "}
-        and also a<a href="https://example.com">link</a>.
+        Far far away, behind the word mountains, far from the countries Vokalia
+        and Consonantia, there live the blind texts. Separated they live in
+        Bookmarksgrove right at the coast of the Semantics, a large language
+        ocean.
       </p>
 
       <p>
-        This is the second paragraph. It contains an <em>emphasized</em>{" "}
-        element.
+        A small river named Duden flows by their place and supplies it with the
+        necessary regelialia. It is a paradisematic country, in which roasted
+        parts of sentences fly into your mouth.
       </p>
 
+      <h2>Contact information</h2>
       <ul>
         <li>
-          Item <span>one</span>
+          Email: <a href="mailto:jane@example.com">jane@example.com</a>
         </li>
-        <li className="special">Item two</li>
         <li>
-          Item <em>three</em>
+          Web: <a href="http://example.com">http://example.com</a>
         </li>
+        <li>Tel: 123 45678</li>
       </ul>
-      <em>Not purple</em>
-      <div className="outer">
-        <div className="box">The inner box is 90% - 30px.</div>
-      </div>
 
       <p>Here is my game</p>
       <Game />
