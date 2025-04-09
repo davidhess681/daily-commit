@@ -22,6 +22,11 @@
   .status {
     margin-bottom: 10px;
   }
+  .status::after{
+    content: '';
+    display: block;
+    border-bottom: 5px solid black;
+  }
   .game {
     display: flex;
     flex-direction: row;
