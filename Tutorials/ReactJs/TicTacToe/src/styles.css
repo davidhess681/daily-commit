@@ -71,4 +71,11 @@
     border: 5px solid purple;
     padding-top: 20px;
     padding-bottom: 20px;
+    display: flex;
+  }
+  li {
+    border: 10px solid;
+    border-radius: 1em;
+    padding: 1em;
+    display: block;
   }
