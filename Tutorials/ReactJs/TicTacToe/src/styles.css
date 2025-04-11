@@ -72,10 +72,14 @@
     padding-top: 20px;
     padding-bottom: 20px;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding-inline: 1em;
   }
   li {
     border: 10px solid;
     border-radius: 1em;
     padding: 1em;
+    margin: .5em;
     display: block;
   }
