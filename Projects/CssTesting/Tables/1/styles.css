@@ -1,0 +1,48 @@
+body {
+  padding: 1em;
+  font: 1.2em / 1.5 sans-serif;
+  font-size: 80%;
+}
+/* Add styles here */
+table{
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+}
+table th,
+table td {
+  padding: 0.3em;
+  vertical-align: top;
+}
+table tbody tr:nth-child(odd){
+  background-color: #eee;
+}
+table thead th:nth-child(1){
+  width: 20%;
+}
+table thead th:nth-child(2){
+  width: 10%;
+}
+table thead th:nth-child(3){
+  width: 10%;
+}
+tr :nth-child(1),
+tr :nth-child(4){
+  text-align: left;
+}
+tr :nth-child(2),
+tr :nth-child(3){
+  text-align: right;
+}
+table tfoot{
+  border-top: 1px solid #999;
+}
+tfoot tr :nth-child(1) {
+  text-align: right;
+}
+
+tfoot tr :nth-child(2) {
+  text-align: left;
+}
