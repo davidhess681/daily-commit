@@ -1,85 +1,37 @@
-  .square {
-    background: #fff;
-    border: 1px solid #999;
-    float: left;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 34px;
-    height: 34px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
-    text-align: center;
-    width: 34px;
-  }
-  
-  .board-row:after {
-    clear: both;
-    content: '';
-    display: table;
-  }
-  
-  .status {
-    margin-bottom: 10px;
-  }
-  .status::after{
-    content: '';
-    display: block;
-    border-bottom: 5px solid black;
-  }
-  .game {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .game-info {
-    margin-left: 20px;
-  }
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
 
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  h1 {
-    color: hotpink;
-    font-size: 2em;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    border-bottom: 10px dotted purple;
-  }
-  
-  h2 {
-    font-size: 1.5em;
-    font-style: italic;
-  }
-  
-  .job-title {
-    color: #999999;
-    font-weight: bold;
-  }
-  
-  a:link,
-  a:visited {
-    color: #fb6542;
-  }
-  
-  a:hover {
-    color: green;
-    text-decoration: none;
-  }
-  ul {
-    background-color: #eeeeee;
-    border: 5px solid purple;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    padding-inline: 1em;
-  }
-  li {
-    border: 10px solid;
-    border-radius: 1em;
-    padding: 1em;
-    margin: .5em;
-    display: block;
-  }
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+.status::after {
+  content: "";
+  display: block;
+  border-bottom: 5px solid black;
+}
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+}
