@@ -1,0 +1,23 @@
+services:
+  apitestpostgresql:
+    image: ${DOCKER_REGISTRY-}apitestpostgresql
+    build:
+      context: .
+      dockerfile: ApiTestPostgreSQL/Dockerfile
+  
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - pgdata:/var/lib/postgresql/data 
+ 
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  pgdata: 
