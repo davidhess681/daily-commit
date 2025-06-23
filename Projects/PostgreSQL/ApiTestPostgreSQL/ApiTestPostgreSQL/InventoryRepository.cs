@@ -1,28 +1,39 @@
-﻿using Npgsql;
+﻿using ApiTestPostgreSQL.Models;
+using Dapper;
+using Npgsql;
 
 namespace ApiTestPostgreSQL;
 
-public class PostgresInitialize
+public class InventoryRepository
 {
-    private static string Host = "localhost";
+    private static string Host = "db";
     private static string User = "postgres";
     private static string DBname = "myfirstdatabase";
     private static string Password = "example";
     private static string Port = "5432";
 
-    public static void Initialize()
+    private readonly string _connectionString;
+
+    public InventoryRepository()
     {
-        string connString =
-            String.Format(
-                "Server={0};Username={1};Database={2};Port={3};Password={4};SSLMode=Prefer",
-                Host,
-                User,
-                DBname,
-                Port,
-                Password);
+        _connectionString = string.Format(
+            "Host={0};Username={1};Database={2};Port={3};Password={4}",
+            Host,
+            User,
+            DBname,
+            Port,
+            Password);
+    }
 
+    public List<InventoryItem> List()
+    {
+        using var conn = new NpgsqlConnection(_connectionString);
+        return conn.Query<InventoryItem>("select * from inventory").ToList();
+    }
 
-        using (var conn = new NpgsqlConnection(connString))
+    public void Initialize()
+    {
+        using (var conn = new NpgsqlConnection(_connectionString))
 
         {
             Console.Out.WriteLine("Opening connection");

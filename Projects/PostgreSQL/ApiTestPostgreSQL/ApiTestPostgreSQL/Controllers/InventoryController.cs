@@ -1,3 +1,4 @@
+using ApiTestPostgreSQL.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiTestPostgreSQL.Controllers
@@ -6,35 +7,26 @@ namespace ApiTestPostgreSQL.Controllers
     [Route("[controller]")]
     public class InventoryController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<InventoryController> _logger;
+        private readonly InventoryRepository _inventoryRepository;
 
-        public InventoryController(ILogger<InventoryController> logger)
+        public InventoryController(ILogger<InventoryController> logger, InventoryRepository inventoryRepository)
         {
             _logger = logger;
+            _inventoryRepository = inventoryRepository;
         }
 
         [HttpPost("initialize")]
         public IActionResult Initialize()
         {
-            PostgresInitialize.Initialize();
+            _inventoryRepository.Initialize();
             return Ok();
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public IEnumerable<InventoryItem> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            return _inventoryRepository.List();
         }
     }
 }
