@@ -1,0 +1,26 @@
+services:
+  apitestmongodb:
+    image: ${DOCKER_REGISTRY-}apitestmongodb
+    build:
+      context: .
+      dockerfile: ApiTestMongoDB/Dockerfile
+    depends_on:
+      - mongodb
+    networks:
+      - mango-network 
+
+  mongodb:
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mango-store:/data/db
+    networks:
+      - mango-network
+
+volumes:
+  mango-store:
+
+networks:
+  mango-network: 
+
