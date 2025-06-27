@@ -1,0 +1,19 @@
+services:
+
+  kafkatestconsumer:
+    image: ${DOCKER_REGISTRY-}kafkatestconsumer
+    build:
+      context: .
+      dockerfile: KafkaTestConsumer/Dockerfile
+
+  kafkatestproducer:
+    image: ${DOCKER_REGISTRY-}kafkatestproducer
+    build:
+      context: .
+      dockerfile: KafkaTestProducer/Dockerfile
+
+  kafka:
+    image: apache/kafka
+
+  kafka-ui:
+    image: kafbat/kafka-ui
