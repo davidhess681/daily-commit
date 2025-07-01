@@ -2,20 +2,20 @@
 
 namespace KafkaTestConsumer;
 
-public class ConsumerService : BackgroundService
+public class ConsumerServiceB : BackgroundService
 {
     private readonly IConsumer<Ignore, string> _consumer;
 
-    private readonly ILogger<ConsumerService> _logger;
+    private readonly ILogger<ConsumerServiceB> _logger;
 
-    public ConsumerService(IConfiguration configuration, ILogger<ConsumerService> logger)
+    public ConsumerServiceB(IConfiguration configuration, ILogger<ConsumerServiceB> logger)
     {
         _logger = logger;
 
         var consumerConfig = new ConsumerConfig
         {
             BootstrapServers = configuration["Kafka:BootstrapServers"],
-            GroupId = "InventoryConsumerGroup",
+            GroupId = "InventoryConsumerGroupB",
             AutoOffsetReset = AutoOffsetReset.Earliest
         };
 
@@ -41,10 +41,10 @@ public class ConsumerService : BackgroundService
         try
         {
             var consumeResult = _consumer.Consume(stoppingToken);
-            
+
             var message = consumeResult.Message.Value;
 
-            _logger.LogInformation($"Received inventory update: {message}");
+            _logger.LogInformation($"Consumer B: Received inventory update: {message}");
         }
         catch (Exception ex)
         {
