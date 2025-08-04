@@ -13,17 +13,17 @@
 }
 else
 {
-    <QuickGrid Class="table" Items="forecasts">
-        <PropertyColumn Property="@(f => f.Date)" Format="d"></PropertyColumn>
-        <PropertyColumn Property="@(f => f.TemperatureC)" Title="Temp. (C)"></PropertyColumn>
-        <PropertyColumn Property="@(f => f.TemperatureF)" Title="Temp. (F)"></PropertyColumn>
+    <QuickGrid Class="table" Items="forecasts" ItemKey="@(x => x.Id)">
+        <PropertyColumn Property="@(f => f.Date)" Format="d" Sortable="true"></PropertyColumn>
+        <PropertyColumn Property="@(f => f.TemperatureC)" Title="Temp. (C)" Sortable="true"></PropertyColumn>
+        <PropertyColumn Property="@(f => f.TemperatureF)" Title="Temp. (F)" Sortable="true"></PropertyColumn>
         <PropertyColumn Property="@(f => f.Summary)"></PropertyColumn>
     </QuickGrid>
 }
 
 @code {
     private IQueryable<WeatherForecast>? forecasts;
-    
+
     protected override async Task OnInitializedAsync()
     {
         // Simulate asynchronous loading to demonstrate streaming rendering
@@ -41,6 +41,7 @@ else
 
     private class WeatherForecast
     {
+        public Guid Id { get; set; } = Guid.NewGuid();
         public DateOnly Date { get; set; }
         public int TemperatureC { get; set; }
         public string? Summary { get; set; }
