@@ -1,5 +1,5 @@
 ﻿@page "/weather"
-@attribute [StreamRendering]
+@rendermode InteractiveServer
 
 <PageTitle>Weather</PageTitle>
 
@@ -23,7 +23,7 @@ else
 
 @code {
     private IQueryable<WeatherForecast>? forecasts;
-
+    
     protected override async Task OnInitializedAsync()
     {
         // Simulate asynchronous loading to demonstrate streaming rendering
@@ -36,7 +36,7 @@ else
             Date = startDate.AddDays(index),
             TemperatureC = Random.Shared.Next(-20, 55),
             Summary = summaries[Random.Shared.Next(summaries.Length)]
-        }).AsQueryable();
+        }).ToList().AsQueryable();
     }
 
     private class WeatherForecast
