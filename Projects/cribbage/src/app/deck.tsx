@@ -1,8 +1,11 @@
+"use client";
+
 import { useState } from "react";
 import { Suit } from "./models/Suit";
 import { CardValue } from "./models/CardValue";
 import { Face } from "./models/Face";
 import { randomInt } from "crypto";
+import Card from "./card";
 
 function GetFullDeck(): CardValue[] {
   const deck: CardValue[] = [];
@@ -35,6 +38,10 @@ function Deck() {
     return drawn;
   }
 
-  return <div></div>;
+  const testDisplayAllCards = cards.map((c) => (
+    <Card suit={c.suit} face={c.face} key={c.suit + c.face} />
+  ));
+
+  return <div>{testDisplayAllCards}</div>;
 }
 export default Deck;

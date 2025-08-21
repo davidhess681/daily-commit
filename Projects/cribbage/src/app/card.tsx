@@ -8,8 +8,7 @@ interface CardProps {
 function Card({ suit, face }: CardProps) {
   return (
     <div>
-      <div>{face}</div>
-      <div>{suit}</div>
+      {face} of {suit}
     </div>
   );
 }
