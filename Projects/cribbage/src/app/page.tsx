@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Deck from "./deck";
+import Game from "./game";
 
 export default function Home() {
   return (
@@ -53,8 +53,8 @@ export default function Home() {
         </div>
 
         <div>
-          some cards :)
-          <Deck></Deck>
+          A cribbage game
+          <Game></Game>
         </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">

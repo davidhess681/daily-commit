@@ -4,8 +4,11 @@ import { useState } from "react";
 import { Suit } from "./models/Suit";
 import { CardValue } from "./models/CardValue";
 import { Face } from "./models/Face";
-import { randomInt } from "crypto";
 import Card from "./card";
+
+interface DeckProps {
+  onCardDrawn: (card: CardValue) => void;
+}
 
 function GetFullDeck(): CardValue[] {
   const deck: CardValue[] = [];
@@ -21,27 +24,36 @@ function GetFullDeck(): CardValue[] {
   return deck;
 }
 
-function Deck() {
+function Deck({ onCardDrawn }: DeckProps) {
   const [cards, setCards] = useState<CardValue[]>(GetFullDeck());
 
   function DrawTopCard() {
-    return DrawCard(0);
+    DrawCard(0);
   }
   function DrawRandomCard() {
-    const position = randomInt(cards.length);
-    return DrawCard(position);
+    const position = Math.floor(Math.random() * cards.length);
+    DrawCard(position);
   }
   function DrawCard(position: number) {
     const drawn = cards.splice(position, 1)[0];
 
     setCards(cards);
-    return drawn;
+    onCardDrawn(drawn);
   }
 
   const testDisplayAllCards = cards.map((c) => (
     <Card suit={c.suit} face={c.face} key={c.suit + c.face} />
   ));
 
-  return <div>{testDisplayAllCards}</div>;
+  return (
+    <div>
+      <button onClick={DrawTopCard}>Draw top card</button>
+      <button onClick={DrawRandomCard}>Draw random card</button>
+      <div>
+        All the cards:
+        {testDisplayAllCards}
+      </div>
+    </div>
+  );
 }
 export default Deck;
